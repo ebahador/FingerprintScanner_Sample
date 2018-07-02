@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">OneTouch</string>
+    <string name="Attention_About_Using">Place your finger on fingerprint sensor to recognition</string>
 </resources>

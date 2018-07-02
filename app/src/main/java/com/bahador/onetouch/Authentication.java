@@ -71,7 +71,8 @@ public class Authentication extends AppCompatActivity {
                     FingerprintManager.CryptoObject cryptoObject =
                             new FingerprintManager.CryptoObject(cipher);
                     CancellationSignal cancellationSignal = new CancellationSignal();
-                    fingerprintManager.authenticate(cryptoObject, cancellationSignal, 0, new FingerprintManager.AuthenticationCallback() {
+                    fingerprintManager.authenticate(cryptoObject, cancellationSignal, 0,
+                            new FingerprintManager.AuthenticationCallback() {
                                 @Override
                                 public void onAuthenticationError(int errorCode, CharSequence errString) {
                                     tvError.setText("Fingerprint Authentication Error \n" + errString);
@@ -154,7 +155,9 @@ public class Authentication extends AppCompatActivity {
     @TargetApi(Build.VERSION_CODES.M)
     private boolean cipherInit() {
         try {
-            cipher = Cipher.getInstance(KeyProperties.KEY_ALGORITHM_AES + "/" + KeyProperties.BLOCK_MODE_CBC + "/" + KeyProperties.ENCRYPTION_PADDING_PKCS7);
+            cipher = Cipher.getInstance(KeyProperties.KEY_ALGORITHM_AES + "/" +
+                    KeyProperties.BLOCK_MODE_CBC + "/" +
+                    KeyProperties.ENCRYPTION_PADDING_PKCS7);
         } catch (NoSuchAlgorithmException | NoSuchPaddingException e) {
             throw new RuntimeException("Failed to get Cipher", e);
         }
@@ -168,7 +171,8 @@ public class Authentication extends AppCompatActivity {
             return true;
         } catch (KeyPermanentlyInvalidatedException e) {
             return false;
-        } catch (KeyStoreException | CertificateException | UnrecoverableKeyException | IOException | NoSuchAlgorithmException | InvalidKeyException e) {
+        } catch (KeyStoreException | CertificateException | UnrecoverableKeyException |
+                IOException | NoSuchAlgorithmException | InvalidKeyException e) {
             throw new RuntimeException("Failed to init Cipher", e);
         }
 
@@ -188,7 +192,8 @@ public class Authentication extends AppCompatActivity {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
         if (requestCode == REQ_PERM_CODE) {
             if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(this, "Fingerprint permission denied", Toast.LENGTH_SHORT).show();

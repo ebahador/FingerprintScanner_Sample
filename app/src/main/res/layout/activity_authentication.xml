@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:text="Place your finger on fingerprint sensor to recognition" />
+            android:text="@string/Attention_About_Using" />
 
         <TextView
             android:id="@+id/error"
